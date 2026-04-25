@@ -1,4 +1,4 @@
-// Riyah Fashion Interactivity
+// Riyah Fashion Interactivity & Mock Shopify API Setup
 
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Sticky Header with Scroll Effect
@@ -19,15 +19,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     filterButtons.forEach(btn => {
         btn.addEventListener('click', () => {
-            // Remove active class from all
             filterButtons.forEach(b => b.classList.remove('active'));
-            // Add to clicked
             btn.classList.add('active');
 
             const category = btn.getAttribute('data-category');
 
-            // Simple animation for filtering
             productCards.forEach(card => {
+                if(card.classList.contains('hidden-product')) return; // Leave hidden products alone until revealed
+                
                 card.style.opacity = '0';
                 card.style.transform = 'scale(0.95)';
                 
@@ -46,54 +45,34 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 3. Add to Cart Animation / Notification
-    const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
-    const cartIcon = document.querySelector('.fa-cart-shopping');
-
-    addToCartButtons.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            
-            // Visual feedback on button
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '<i class="fa-solid fa-check"></i> Added!';
-            btn.style.backgroundColor = '#10B981'; // Green
-            
-            // Shake cart icon
-            cartIcon.classList.add('fa-bounce');
-            setTimeout(() => cartIcon.classList.remove('fa-bounce'), 1000);
-
-            setTimeout(() => {
-                btn.innerHTML = originalText;
-                btn.style.backgroundColor = '';
-            }, 2000);
-            
-            // Simple notification (alert replaced with smooth toast later if needed)
-            console.log('Product added to cart');
-        });
-    });
-
-    // 4. Smooth Scrolling for Navigation
-    document.querySelectorAll('nav a').forEach(anchor => {
+    // 3. Smooth Scrolling for Navigation
+    document.querySelectorAll('nav a, .header-icons a').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            document.querySelector(targetId).scrollIntoView({
-                behavior: 'smooth'
-            });
+            const targetHref = this.getAttribute('href');
+            if (targetHref && targetHref.includes('#')) {
+                const targetId = targetHref.split('#')[1];
+                if (targetId) {
+                    const targetEl = document.getElementById(targetId);
+                    if (targetEl) {
+                        // If we are on the same page, prevent default and scroll
+                        // Otherwise, let the browser handle the jump to index.html#id
+                        if (window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || window.location.pathname === '') {
+                            e.preventDefault();
+                            targetEl.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }
+                }
+            }
         });
     });
 
-    // 5. Mobile Menu Toggle
+    // 4. Mobile Menu Toggle
     const hamburger = document.querySelector('.hamburger');
     const nav = document.querySelector('nav');
 
     if (hamburger && nav) {
         hamburger.addEventListener('click', () => {
             nav.classList.toggle('active');
-            // Change icon to X if active
             const icon = hamburger.querySelector('i');
             if (nav.classList.contains('active')) {
                 icon.classList.remove('fa-bars');
@@ -104,7 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Close menu when a link is clicked
         nav.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 nav.classList.remove('active');
@@ -114,4 +92,295 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // 5. New Arrivals Disappearance Logic (14 days limit)
+    const newArrivalsGrid = document.querySelector('#new-arrivals-grid');
+    if (newArrivalsGrid) {
+        const newArrivalCards = newArrivalsGrid.querySelectorAll('.product-card');
+        let visibleCount = 0;
+        
+        newArrivalCards.forEach(card => {
+            const uploadDateAttr = card.getAttribute('data-upload-date');
+            if (uploadDateAttr) {
+                const uploadDate = new Date(uploadDateAttr);
+                const today = new Date();
+                const diffTime = Math.abs(today - uploadDate);
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+                
+                if (diffDays > 14) {
+                    card.style.display = 'none';
+                } else {
+                    visibleCount++;
+                }
+            } else {
+                visibleCount++;
+            }
+        });
+
+        if (visibleCount === 0) {
+            document.querySelector('#new-arrivals').style.display = 'none';
+        }
+    }
+
+    // 6. View More Products Logic
+    const viewAllBtns = document.querySelectorAll('.view-all');
+    viewAllBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            // Check if it's the shop section view all
+            if(btn.closest('#shop')) {
+                e.preventDefault();
+                const hiddenProducts = document.querySelectorAll('.hidden-product');
+                hiddenProducts.forEach(product => {
+                    product.style.display = 'block';
+                    product.classList.remove('hidden-product'); // Make them permanent part of the grid
+                });
+                btn.style.display = 'none'; // Hide the button after revealing
+            }
+        });
+    });
+
+    // ==========================================
+    // Shopify API Mock & Cart State
+    // ==========================================
+    let cart = []; // Array to hold cart items
+    
+    // UI Elements
+    const cartIcon = document.getElementById('cartIcon');
+    const cartCount = document.getElementById('cartCount');
+    const cartDrawer = document.getElementById('cartDrawer');
+    const cartOverlay = document.getElementById('cartOverlay');
+    const closeCart = document.getElementById('closeCart');
+    const cartItemsContainer = document.getElementById('cartItems');
+    const cartTotalEl = document.getElementById('cartTotal');
+    const headerCartIcon = document.querySelector('.fa-cart-shopping');
+
+    // Toggle Cart Drawer
+    const toggleCart = () => {
+        if(cartDrawer && cartOverlay) {
+            cartDrawer.classList.toggle('active');
+            cartOverlay.classList.toggle('active');
+        }
+    };
+
+    if(cartIcon) cartIcon.addEventListener('click', toggleCart);
+    if(closeCart) closeCart.addEventListener('click', toggleCart);
+    if(cartOverlay) cartOverlay.addEventListener('click', toggleCart);
+
+    // Render Cart
+    const renderCart = () => {
+        if(!cartItemsContainer) return;
+        cartItemsContainer.innerHTML = '';
+        let total = 0;
+        let count = 0;
+
+        if (cart.length === 0) {
+            cartItemsContainer.innerHTML = '<p style="text-align:center; color:#888; margin-top:20px;">Your cart is empty.</p>';
+        } else {
+            cart.forEach((item, index) => {
+                total += item.price * item.quantity;
+                count += item.quantity;
+
+                const itemEl = document.createElement('div');
+                itemEl.className = 'cart-item';
+                itemEl.innerHTML = `
+                    <img src="${item.image}" alt="${item.title}">
+                    <div class="cart-item-details">
+                        <div class="cart-item-title">${item.title}</div>
+                        <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+                        <div class="cart-item-controls">
+                            <button class="qty-btn minus" data-index="${index}">-</button>
+                            <span>${item.quantity}</span>
+                            <button class="qty-btn plus" data-index="${index}">+</button>
+                            <button class="qty-btn remove" data-index="${index}" style="margin-left: auto; color: red;"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                    </div>
+                `;
+                cartItemsContainer.appendChild(itemEl);
+            });
+        }
+
+        if(cartTotalEl) cartTotalEl.innerText = `$${total.toFixed(2)}`;
+        if(cartCount) cartCount.innerText = count;
+
+        // Attach event listeners for cart item controls
+        document.querySelectorAll('.qty-btn.minus').forEach(btn => {
+            btn.addEventListener('click', (e) => updateQuantity(e.target.dataset.index, -1));
+        });
+        document.querySelectorAll('.qty-btn.plus').forEach(btn => {
+            btn.addEventListener('click', (e) => updateQuantity(e.target.dataset.index, 1));
+        });
+        document.querySelectorAll('.qty-btn.remove').forEach(btn => {
+            const idx = btn.closest('.qty-btn').dataset.index;
+            btn.addEventListener('click', () => removeFromCart(idx));
+        });
+    };
+
+    const addToCart = (product) => {
+        const existingItem = cart.find(item => item.id === product.id && item.size === product.size);
+        if (existingItem) {
+            existingItem.quantity += 1;
+        } else {
+            cart.push({ ...product, quantity: 1 });
+        }
+        
+        renderCart();
+        
+        // Visual feedback
+        if(headerCartIcon) {
+            headerCartIcon.classList.add('fa-bounce');
+            setTimeout(() => headerCartIcon.classList.remove('fa-bounce'), 1000);
+        }
+    };
+
+    const updateQuantity = (index, change) => {
+        if (cart[index]) {
+            cart[index].quantity += change;
+            if (cart[index].quantity <= 0) {
+                removeFromCart(index);
+            } else {
+                renderCart();
+            }
+        }
+    };
+
+    const removeFromCart = (index) => {
+        cart.splice(index, 1);
+        renderCart();
+    };
+
+    // ==========================================
+    // Quick View Modal Logic
+    // ==========================================
+    
+    // Inject Quick View Modal into DOM if it doesn't exist
+    if (!document.getElementById('quickViewOverlay')) {
+        const quickViewHtml = `
+            <div class="quick-view-overlay" id="quickViewOverlay">
+                <div class="quick-view-modal">
+                    <button class="quick-view-close" id="quickViewClose">&times;</button>
+                    <div class="quick-view-img-container">
+                        <img src="" alt="Product" id="qvImage">
+                    </div>
+                    <div class="quick-view-details">
+                        <h2 class="quick-view-title" id="qvTitle">Product Title</h2>
+                        <div class="quick-view-price" id="qvPrice">$0.00</div>
+                        <p class="quick-view-description">Experience effortless style and maximum comfort with this premium piece. Crafted from high-quality materials to ensure everyday confidence.</p>
+                        
+                        <div class="quick-view-options">
+                            <label style="display:block; margin-bottom:5px; font-weight:600;">Size</label>
+                            <select class="quick-view-select" id="qvSize">
+                                <option value="S">Small</option>
+                                <option value="M">Medium</option>
+                                <option value="L">Large</option>
+                                <option value="XL">X-Large</option>
+                            </select>
+                        </div>
+                        
+                        <button class="btn btn-primary" id="qvAddToCartBtn" style="width: 100%;"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        `;
+        document.body.insertAdjacentHTML('beforeend', quickViewHtml);
+    }
+
+    const quickViewOverlay = document.getElementById('quickViewOverlay');
+    const quickViewClose = document.getElementById('quickViewClose');
+    const qvAddToCartBtn = document.getElementById('qvAddToCartBtn');
+    let currentQuickViewProduct = null;
+
+    const toggleQuickView = () => {
+        quickViewOverlay.classList.toggle('active');
+    };
+
+    if(quickViewClose) quickViewClose.addEventListener('click', toggleQuickView);
+    if(quickViewOverlay) {
+        quickViewOverlay.addEventListener('click', (e) => {
+            if (e.target === quickViewOverlay) toggleQuickView();
+        });
+    }
+
+    // Attach click listeners to all product cards
+    const productCardsElements = document.querySelectorAll('.product-card');
+    productCardsElements.forEach(card => {
+        card.addEventListener('click', (e) => {
+            // Prevent opening if they somehow clicked the actual add-to-cart button underneath the overlay
+            // But actually we want the add to cart button to ALSO trigger quick view!
+            e.preventDefault();
+
+            const title = card.querySelector('h3').innerText;
+            const priceText = card.querySelector('.price').innerText;
+            const price = parseFloat(priceText.replace('$', ''));
+            const img = card.querySelector('img').src;
+            const id = title.toLowerCase().replace(/\s+/g, '-');
+
+            currentQuickViewProduct = { id, title, price, image: img };
+
+            // Populate Modal
+            document.getElementById('qvImage').src = img;
+            document.getElementById('qvTitle').innerText = title;
+            document.getElementById('qvPrice').innerText = priceText;
+
+            toggleQuickView();
+        });
+    });
+
+    // Add to Cart from Quick View
+    if(qvAddToCartBtn) {
+        qvAddToCartBtn.addEventListener('click', () => {
+            if (currentQuickViewProduct) {
+                const selectedSize = document.getElementById('qvSize').value;
+                const productToAdd = { ...currentQuickViewProduct, size: selectedSize };
+                
+                const originalText = qvAddToCartBtn.innerHTML;
+                qvAddToCartBtn.innerHTML = '<i class="fa-solid fa-check"></i> Added!';
+                qvAddToCartBtn.style.backgroundColor = '#10B981'; // Green
+                
+                addToCart(productToAdd);
+                
+                setTimeout(() => {
+                    qvAddToCartBtn.innerHTML = originalText;
+                    qvAddToCartBtn.style.backgroundColor = '';
+                    toggleQuickView();
+                    if(cartDrawer && !cartDrawer.classList.contains('active')) {
+                        toggleCart();
+                    }
+                }, 1000);
+            }
+        });
+    }
+
+    // ==========================================
+    // Auth Modal Logic
+    // ==========================================
+    const userIcon = document.getElementById('userIcon');
+    const authModal = document.getElementById('authOverlay');
+    const closeAuth = document.getElementById('closeAuth');
+    const authTabs = document.querySelectorAll('.auth-tab');
+    const authForms = document.querySelectorAll('.auth-form');
+
+    const toggleAuthModal = () => {
+        if(authModal) authModal.classList.toggle('active');
+    };
+
+    if(userIcon) userIcon.addEventListener('click', toggleAuthModal);
+    if(closeAuth) closeAuth.addEventListener('click', toggleAuthModal);
+    
+    if(authModal) {
+        authModal.addEventListener('click', (e) => {
+            if (e.target === authModal) toggleAuthModal();
+        });
+    }
+
+    authTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            authTabs.forEach(t => t.classList.remove('active'));
+            authForms.forEach(f => f.classList.remove('active'));
+            
+            tab.classList.add('active');
+            const targetFormId = tab.getAttribute('data-tab') + 'Form';
+            const targetForm = document.getElementById(targetFormId);
+            if(targetForm) targetForm.classList.add('active');
+        });
+    });
 });
