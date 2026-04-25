@@ -298,15 +298,18 @@ nav ul li a.active {
     background: var(--primary);
     color: white;
     text-align: center;
-    padding: 12px;
+    padding: 15px;
     font-weight: 600;
     border: none;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: var(--transition);
+    opacity: 1; /* Ensure it's always visible */
+    transform: translateY(0); /* Ensure it's not hidden off-screen */
 }
 
 .add-to-cart-btn:hover {
     background-color: var(--secondary);
+    padding-bottom: 18px; /* Slight expansion on hover for feedback */
 }
 
 .product-info h3 {
@@ -324,8 +327,7 @@ nav ul li a.active {
 /* New Launches */
 .launches-grid {
     display: grid;
-    grid-template-columns: 2.2fr 1fr;
-    grid-template-rows: auto auto;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 30px;
 }
 
@@ -333,14 +335,9 @@ nav ul li a.active {
     position: relative;
     border-radius: 20px;
     overflow: hidden;
-    height: 350px;
+    height: 400px;
     box-shadow: var(--shadow-md);
     cursor: pointer;
-}
-
-.launch-item.large {
-    grid-row: span 2;
-    height: 730px;
 }
 
 .launch-item img {

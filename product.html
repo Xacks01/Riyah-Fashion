@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details | Riyah Fashion</title>
+    <meta name="description" content="Detailed view of our premium fashion collection.">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="products_data.js"></script>
+    <style>
+        .product-details-page {
+            padding: 120px 0 60px;
+        }
+        .product-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+        .product-gallery {
+            position: sticky;
+            top: 100px;
+        }
+        .main-image {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 20px;
+        }
+        .thumbnail-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+        .thumbnail-grid img {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+            opacity: 0.6;
+        }
+        .thumbnail-grid img.active {
+            opacity: 1;
+            border: 2px solid var(--primary-color);
+        }
+        .product-info-sticky {
+            padding: 20px 0;
+        }
+        .product-info-sticky h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+        .product-info-sticky .price {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .product-description {
+            margin-bottom: 30px;
+            line-height: 1.8;
+            color: #666;
+        }
+        .option-group {
+            margin-bottom: 25px;
+        }
+        .option-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        .size-options {
+            display: flex;
+            gap: 10px;
+        }
+        .size-btn {
+            width: 45px;
+            height: 45px;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        .size-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px white, 0 0 0 4px var(--primary); /* Purple ring */
+        }
+        .size-btn:hover:not(.active) {
+            border-color: var(--primary);
+        }
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 40px;
+        }
+        .add-to-cart-large {
+            flex: 2;
+            padding: 18px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .add-to-cart-large:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        .wishlist-btn {
+            flex: 1;
+            padding: 18px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .wishlist-btn:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+        .product-meta {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            font-size: 0.9rem;
+            color: #888;
+        }
+        .product-meta p {
+            margin-bottom: 8px;
+        }
+        .product-meta span {
+            color: #333;
+            font-weight: 500;
+        }
+
+        @media (max-width: 992px) {
+            .product-container {
+                grid-template-columns: 1fr;
+            }
+            .product-gallery {
+                position: static;
+            }
+            .main-image {
+                height: 450px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header (Dynamic content will be handled in script.js or shared) -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><img src="imgs/riyah-logo.png" alt="Riyah Fashion"></a>
+            </div>
+            <div class="hamburger">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html#new-arrivals">New Arrivals</a></li>
+                    <li><a href="index.html#shop">Shop</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#contact-footer">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-icons">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <i class="fa-regular fa-user" id="userIcon" style="cursor: pointer;"></i>
+                <div class="cart-icon-container" id="cartIcon" style="position: relative; cursor: pointer;">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="product-details-page container">
+        <div id="productContent" class="product-container">
+            <!-- Loading State -->
+            <div style="grid-column: 1/-1; text-align: center; padding: 100px;">
+                <i class="fa-solid fa-circle-notch fa-spin fa-3x"></i>
+                <p style="margin-top: 20px;">Loading product details...</p>
+            </div>
+        </div>
+
+        <section class="related-products" style="margin-top: 100px; padding-top: 60px; border-top: 1px solid #eee;">
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 40px; text-align: center;">You May Also Like</h2>
+            <div class="product-grid" id="relatedGrid">
+                <!-- Related products will be injected here -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (Static copy from index.html) -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col first">
+                    <div class="footer-logo">
+                        <img src="imgs/riyah-logo.png" alt="Riyah Fashion">
+                    </div>
+                    <p>Fashion that speaks your language and builds your confidence.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="shipping.html">Shipping</a></li>
+                        <li><a href="returns.html">Returns</a></li>
+                        <li><a href="terms.html">Terms & Privacy</a></li>
+                        <li><a href="track-order.html">Track Order</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>About Us</h4>
+                    <ul>
+                        <li><a href="about.html">Our Story</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="press.html">Press</a></li>
+                        <li><a href="stores.html">Stores</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col" id="contact-footer">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><a href="mailto:hello@riyahfashion.com"><i class="fa-solid fa-envelope"></i> hello@riyahfashion.com</a></li>
+                        <li><a href="tel:+15551234567"><i class="fa-solid fa-phone"></i> +1 (555) 123-4567</a></li>
+                        <li class="social-links">
+                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Riyah Fashion. All rights reserved.</p>
+                <div class="payment-methods">
+                    <i class="fa-brands fa-cc-visa"></i>
+                    <i class="fa-brands fa-cc-mastercard"></i>
+                    <i class="fa-brands fa-cc-paypal"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Drawer -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+            <button class="close-cart" id="closeCart">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be rendered here -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Subtotal</span>
+                <span id="cartTotal">$0.00</span>
+            </div>
+            <button class="btn btn-primary checkout-btn" style="width: 100%;">Checkout</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Specific logic for product page
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const productId = params.get('id');
+            
+            if (!productId) {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            // In a real app, we'd fetch from an API. 
+            // Here we look at our catalog data (once we define it globally).
+            // For now, let's wait for script.js to load and populate it.
+            
+            const checkData = setInterval(() => {
+                if (window.catalogData) {
+                    clearInterval(checkData);
+                    renderProduct(productId);
+                }
+            }, 100);
+
+            function renderProduct(id) {
+                const product = window.catalogData.find(p => p.id === id);
+                const container = document.getElementById('productContent');
+
+                if (!product) {
+                    container.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 100px;"><h2>Product Not Found</h2><a href="index.html" class="view-all">Back to Home</a></div>';
+                    return;
+                }
+
+                container.innerHTML = `
+                    <div class="product-gallery">
+                        <img src="${product.image}" alt="${product.title}" class="main-image" id="mainProdImage">
+                    </div>
+                    <div class="product-info-sticky">
+                        <nav class="breadcrumb" style="margin-bottom: 20px; font-size: 0.9rem; color: #888;">
+                            <a href="index.html" style="color: #888;">Home</a> / 
+                            <a href="index.html#shop" style="color: #888;">${product.category === 'men' ? 'Men' : 'Women'}</a> / 
+                            <span style="color: #333;">${product.title}</span>
+                        </nav>
+                        <h1>${product.title}</h1>
+                        <p class="price">$${product.price.toFixed(2)}</p>
+                        <div class="product-description">
+                            <p>This premium ${product.title} is crafted from the finest materials to provide unparalleled comfort and style. Featuring a modern cut and meticulous attention to detail, it's a versatile addition to any contemporary wardrobe.</p>
+                        </div>
+                        
+                        <div class="option-group">
+                            <label>Selected Color: <span id="selectedColorName">Midnight Black</span></label>
+                            <div class="color-options" style="display: flex; gap: 15px; margin-top: 10px;">
+                                <div class="color-swatch active" data-color="Midnight Black" style="width: 35px; height: 35px; border-radius: 50%; background: #1a1a1a; cursor: pointer; border: 2px solid white; box-shadow: 0 0 0 2px white, 0 0 0 4px var(--primary);"></div>
+                                <div class="color-swatch" data-color="Classic White" style="width: 35px; height: 35px; border-radius: 50%; background: #f5f5f5; cursor: pointer; border: 2px solid white; box-shadow: 0 0 0 1px #ddd;"></div>
+                                <div class="color-swatch" data-color="Sand Beige" style="width: 35px; height: 35px; border-radius: 50%; background: #d2b48c; cursor: pointer; border: 2px solid white; box-shadow: 0 0 0 1px #ddd;"></div>
+                            </div>
+                        </div>
+
+                        <div class="option-group">
+                            <label>Select Size</label>
+                            <div class="size-options">
+                                <div class="size-btn">S</div>
+                                <div class="size-btn active">M</div>
+                                <div class="size-btn">L</div>
+                                <div class="size-btn">XL</div>
+                            </div>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="add-to-cart-large" id="pageAddToCart">
+                                <i class="fa-solid fa-bag-shopping"></i> Add to Bag
+                            </button>
+                            <button class="wishlist-btn">
+                                <i class="fa-regular fa-heart"></i>
+                            </button>
+                        </div>
+                        <div class="product-meta">
+                            <p>Category: <span>${product.category === 'men' ? 'Men\'s Wear' : 'Women\'s Wear'}</span></p>
+                            <p>Availability: <span>In Stock</span></p>
+                            <p>SKU: <span>RF-${id.toUpperCase().substring(0,6)}</span></p>
+                        </div>
+                    </div>
+                `;
+
+                // Handle color selection
+                container.querySelectorAll('.color-swatch').forEach(swatch => {
+                    swatch.addEventListener('click', () => {
+                        container.querySelectorAll('.color-swatch').forEach(s => {
+                            s.classList.remove('active');
+                            s.style.boxShadow = '0 0 0 1px #ddd';
+                        });
+                        swatch.classList.add('active');
+                        swatch.style.boxShadow = '0 0 0 2px white, 0 0 0 4px var(--primary)'; // Purple ring
+                        document.getElementById('selectedColorName').innerText = swatch.getAttribute('data-color');
+                    });
+                });
+
+                // Handle size selection
+                container.querySelectorAll('.size-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        container.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                    });
+                });
+
+                // Handle Add to Cart
+                document.getElementById('pageAddToCart').addEventListener('click', () => {
+                    const selectedSize = container.querySelector('.size-btn.active').innerText;
+                    const selectedColor = document.getElementById('selectedColorName').innerText;
+                    window.addToCart({
+                        ...product,
+                        size: selectedSize,
+                        color: selectedColor
+                    });
+                });
+
+                renderRelated(product);
+            }
+
+            function renderRelated(currentProduct) {
+                const relatedGrid = document.getElementById('relatedGrid');
+                if (!relatedGrid) return;
+
+                // Get 4 items from the same category, excluding current product
+                const related = window.catalogData
+                    .filter(p => p.category === currentProduct.category && p.id !== currentProduct.id)
+                    .sort(() => 0.5 - Math.random()) // Randomize
+                    .slice(0, 4);
+
+                relatedGrid.innerHTML = related.map(p => `
+                    <div class="product-card">
+                        <div class="product-image">
+                            <a href="product.html?id=${p.id}">
+                                <img src="${p.image}" alt="${p.title}">
+                            </a>
+                            <button class="add-to-cart-btn" onclick="window.addToCart({id: '${p.id}', title: '${p.title}', price: ${p.price}, image: '${p.image}', size: 'M'})">
+                                <i class="fa-solid fa-cart-plus"></i> Add to cart
+                            </button>
+                        </div>
+                        <div class="product-info">
+                            <a href="product.html?id=${p.id}" style="text-decoration: none; color: inherit;">
+                                <h3>${p.title}</h3>
+                            </a>
+                            <p class="price">$${p.price.toFixed(2)}</p>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        });
+    </script>
+</body>
+</html>
