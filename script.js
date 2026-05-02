@@ -387,6 +387,15 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('qvImage').src = imgUrl;
             document.getElementById('qvTitle').innerText = title;
             document.getElementById('qvPrice').innerText = priceText;
+            
+            const qvSize = document.getElementById('qvSize');
+            if (qvSize) {
+                if (currentQuickViewProduct.category === 'men') {
+                    qvSize.innerHTML = '<option value="M">M</option><option value="L">L</option><option value="XL">XL</option><option value="XXL">XXL</option><option value="XXXL">XXXL</option>';
+                } else {
+                    qvSize.innerHTML = '<option value="8">8</option><option value="10">10</option><option value="12">12</option><option value="14">14</option><option value="16">16</option><option value="18">18</option><option value="20">20</option>';
+                }
+            }
 
             toggleQuickView();
         });

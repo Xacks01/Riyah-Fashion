@@ -651,7 +651,8 @@ nav ul li a.active {
 /* Footer */
 footer {
     padding: 80px 0 40px;
-    background-color: #F9FAFB;
+    background-color: var(--primary);
+    color: white;
 }
 
 .footer-grid {
@@ -670,6 +671,7 @@ footer {
     margin-bottom: 25px;
     font-size: 1.1rem;
     font-family: 'Inter', sans-serif;
+    color: white;
 }
 
 .footer-col ul li {
@@ -677,12 +679,12 @@ footer {
 }
 
 .footer-col ul li a {
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.8);
     font-size: 0.95rem;
 }
 
 .footer-col ul li a:hover {
-    color: var(--primary);
+    color: white;
 }
 
 .footer-col .social-links {
@@ -693,21 +695,21 @@ footer {
 
 .footer-col .social-links i {
     font-size: 1.2rem;
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.8);
     transition: var(--transition);
 }
 
 .footer-col .social-links a:hover i {
-    color: var(--primary);
+    color: white;
 }
 
 .footer-bottom {
-    border-top: 1px solid var(--border-color);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding-top: 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.7);
     font-size: 0.9rem;
 }
 

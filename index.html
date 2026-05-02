@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,10 +10,13 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
+
 <body>
 
     <header>
@@ -43,28 +47,34 @@
     </header>
 
     <main>
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="hero-split-images">
-                <div class="split-image hero-category-link" data-target="men">
-                    <img src="MALE/DSC02569.jpg" alt="Male Outfit">
-                    <div class="split-overlay"><h2>MEN</h2></div>
-                </div>
-                <div class="split-image hero-category-link" data-target="women">
-                    <img src="FEMALE/FEMALE/DSC03146.jpg" alt="Female Outfit">
-                    <div class="split-overlay"><h2>WOMEN</h2></div>
+        <!-- Hero Intro Content -->
+        <section class="hero-intro container" style="text-align: center; padding-top: 40px; padding-bottom: 20px;">
+            <div class="hero-content">
+                <!-- <img src="imgs/riyah-logo.png" alt="Riyah Fashion" style="max-height: 80px; margin-bottom: 20px;">-->
+                <h1>Effortless Style. <br> Everyday Confidence.</h1>
+                <p>Your style, your personality, your life. Experience fashion that empowers you every single day.</p>
+                <div class="hero-btns">
+                    <a href="#shop" class="btn btn-primary">Shop now</a>
+                    <a href="#new-arrivals" class="btn btn-outline">Explore</a>
                 </div>
             </div>
         </section>
 
-        <!-- Hero Intro Content -->
-        <section class="hero-intro container">
-            <div class="hero-content">
-                <h1>Effortless Style. <br> Everyday Confidence.</h1>
-                <p>Your style, your personality, your life. Experience fashion that empowers you every single day.</p>
-                <div class="hero-btns">
-                    <a href="#" class="btn btn-primary">Shop now</a>
-                    <a href="#" class="btn btn-outline">Explore</a>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-split-images" style="position: relative;">
+                <div class="split-image hero-category-link" data-target="men">
+                    <img src="MALE/DSC02569.jpg" alt="Male Outfit">
+                </div>
+                <div class="split-image hero-category-link" data-target="women">
+                    <img src="FEMALE/FEMALE/DSC03146.jpg" alt="Female Outfit">
+                </div>
+                <!-- Brand logo at center of images -->
+                <div class="center-brand-logo"
+                    style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10; background: white; width: 100px; height: 100px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                    <h1
+                        style="margin: 0; font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--primary); line-height: 1;">
+                        R</h1>
                 </div>
             </div>
         </section>
@@ -127,7 +137,7 @@
 
         <!-- New Launches -->
         <section class="new-launches container">
-             <div class="section-header">
+            <div class="section-header">
                 <div class="section-title">
                     <h2>New Launches</h2>
                 </div>
@@ -180,152 +190,297 @@
             <div class="product-grid" id="shop-grid">
                 <!-- 18 MEN'S PRODUCTS -->
                 <div class="product-card" data-category="men">
-                    <div class="product-image"><img src="MALE/DSC02569.jpg" alt="Men's Collection 1"><button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
-                    <div class="product-info"><h3>Essential Men's Tee</h3><p class="price">$35.00</p></div>
+                    <div class="product-image"><img src="MALE/DSC02569.jpg" alt="Men's Collection 1"><button
+                            class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
+                    <div class="product-info">
+                        <h3>Essential Men's Tee</h3>
+                        <p class="price">$35.00</p>
+                    </div>
                 </div>
                 <div class="product-card" data-category="men">
-                    <div class="product-image"><img src="MALE/DSC02585.jpg" alt="Men's Collection 2"><button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
-                    <div class="product-info"><h3>Classic Polo Shirt</h3><p class="price">$45.00</p></div>
+                    <div class="product-image"><img src="MALE/DSC02585.jpg" alt="Men's Collection 2"><button
+                            class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
+                    <div class="product-info">
+                        <h3>Classic Polo Shirt</h3>
+                        <p class="price">$45.00</p>
+                    </div>
                 </div>
                 <div class="product-card" data-category="men">
-                    <div class="product-image"><img src="MALE/DSC02785 1.jpg" alt="Men's Collection 3"><button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
-                    <div class="product-info"><h3>Urban Denim Jacket</h3><p class="price">$85.00</p></div>
+                    <div class="product-image"><img src="MALE/DSC02785 1.jpg" alt="Men's Collection 3"><button
+                            class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
+                    <div class="product-info">
+                        <h3>Urban Denim Jacket</h3>
+                        <p class="price">$85.00</p>
+                    </div>
                 </div>
                 <div class="product-card" data-category="men">
-                    <div class="product-image"><img src="MALE/DSC02786.jpg" alt="Men's Collection 4"><button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
-                    <div class="product-info"><h3>Slim Fit Chinos</h3><p class="price">$55.00</p></div>
+                    <div class="product-image"><img src="MALE/DSC02786.jpg" alt="Men's Collection 4"><button
+                            class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
+                    <div class="product-info">
+                        <h3>Slim Fit Chinos</h3>
+                        <p class="price">$55.00</p>
+                    </div>
                 </div>
                 <!-- 18 WOMEN'S PRODUCTS -->
                 <div class="product-card" data-category="women">
-                    <div class="product-image"><img src="FEMALE/FEMALE/DSC00001.jpg" alt="Women's Collection 1"><button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
-                    <div class="product-info"><h3>Signature Silk Blouse</h3><p class="price">$65.00</p></div>
+                    <div class="product-image"><img src="FEMALE/FEMALE/DSC00001.jpg" alt="Women's Collection 1"><button
+                            class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
+                    <div class="product-info">
+                        <h3>Signature Silk Blouse</h3>
+                        <p class="price">$65.00</p>
+                    </div>
                 </div>
                 <div class="product-card" data-category="women">
-                    <div class="product-image"><img src="FEMALE/FEMALE/DSC03146.jpg" alt="Women's Collection 2"><button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
-                    <div class="product-info"><h3>Evening Grace Gown</h3><p class="price">$120.00</p></div>
+                    <div class="product-image"><img src="FEMALE/FEMALE/DSC03146.jpg" alt="Women's Collection 2"><button
+                            class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
+                    <div class="product-info">
+                        <h3>Evening Grace Gown</h3>
+                        <p class="price">$120.00</p>
+                    </div>
                 </div>
                 <div class="product-card" data-category="women">
-                    <div class="product-image"><img src="FEMALE/FEMALE/DSC03218.jpg" alt="Women's Collection 3"><button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
-                    <div class="product-info"><h3>Summer Breeze Dress</h3><p class="price">$75.00</p></div>
+                    <div class="product-image"><img src="FEMALE/FEMALE/DSC03218.jpg" alt="Women's Collection 3"><button
+                            class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
+                    <div class="product-info">
+                        <h3>Summer Breeze Dress</h3>
+                        <p class="price">$75.00</p>
+                    </div>
                 </div>
                 <div class="product-card" data-category="women">
-                    <div class="product-image"><img src="FEMALE/FEMALE/DSC03222.jpg" alt="Women's Collection 4"><button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
-                    <div class="product-info"><h3>Chic Wrap Skirt</h3><p class="price">$48.00</p></div>
+                    <div class="product-image"><img src="FEMALE/FEMALE/DSC03222.jpg" alt="Women's Collection 4"><button
+                            class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
+                    <div class="product-info">
+                        <h3>Chic Wrap Skirt</h3>
+                        <p class="price">$48.00</p>
+                    </div>
                 </div>
 
                 <!-- Hidden Products (Remaining 28) -->
                 <div class="product-card hidden-product" data-category="men" style="display: none;">
-                    <div class="product-image"><img src="MALE/DSC02826.jpg" alt="Men's Collection 5"><button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
-                    <div class="product-info"><h3>Utility Cargo Pants</h3><p class="price">$65.00</p></div>
+                    <div class="product-image"><img src="MALE/DSC02826.jpg" alt="Men's Collection 5"><button
+                            class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
+                    <div class="product-info">
+                        <h3>Utility Cargo Pants</h3>
+                        <p class="price">$65.00</p>
+                    </div>
                 </div>
                 <div class="product-card hidden-product" data-category="men" style="display: none;">
-                    <div class="product-image"><img src="MALE/DSC02848.jpg" alt="Men's Collection 6"><button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
-                    <div class="product-info"><h3>Oxford Button Down</h3><p class="price">$55.00</p></div>
+                    <div class="product-image"><img src="MALE/DSC02848.jpg" alt="Men's Collection 6"><button
+                            class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
+                    <div class="product-info">
+                        <h3>Oxford Button Down</h3>
+                        <p class="price">$55.00</p>
+                    </div>
                 </div>
                 <div class="product-card hidden-product" data-category="men" style="display: none;">
-                    <div class="product-image"><img src="MALE/DSC02879.jpg" alt="Men's Collection 7"><button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
-                    <div class="product-info"><h3>Quilted Vest</h3><p class="price">$70.00</p></div>
+                    <div class="product-image"><img src="MALE/DSC02879.jpg" alt="Men's Collection 7"><button
+                            class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
+                    <div class="product-info">
+                        <h3>Quilted Vest</h3>
+                        <p class="price">$70.00</p>
+                    </div>
                 </div>
                 <div class="product-card hidden-product" data-category="men" style="display: none;">
-                    <div class="product-image"><img src="MALE/DSC02884.jpg" alt="Men's Collection 8"><button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
-                    <div class="product-info"><h3>Modern Blazer</h3><p class="price">$150.00</p></div>
+                    <div class="product-image"><img src="MALE/DSC02884.jpg" alt="Men's Collection 8"><button
+                            class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
+                    <div class="product-info">
+                        <h3>Modern Blazer</h3>
+                        <p class="price">$150.00</p>
+                    </div>
                 </div>
                 <div class="product-card hidden-product" data-category="men" style="display: none;">
-                    <div class="product-image"><img src="MALE/DSC02886.jpg" alt="Men's Collection 9"><button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
-                    <div class="product-info"><h3>Fleece Hoodie</h3><p class="price">$50.00</p></div>
+                    <div class="product-image"><img src="MALE/DSC02886.jpg" alt="Men's Collection 9"><button
+                            class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
+                    <div class="product-info">
+                        <h3>Fleece Hoodie</h3>
+                        <p class="price">$50.00</p>
+                    </div>
                 </div>
                 <div class="product-card hidden-product" data-category="men" style="display: none;">
-                    <div class="product-image"><img src="MALE/DSC02934.jpg" alt="Men's Collection 10"><button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
-                    <div class="product-info"><h3>Bomber Jacket</h3><p class="price">$95.00</p></div>
+                    <div class="product-image"><img src="MALE/DSC02934.jpg" alt="Men's Collection 10"><button
+                            class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
+                    <div class="product-info">
+                        <h3>Bomber Jacket</h3>
+                        <p class="price">$95.00</p>
+                    </div>
                 </div>
                 <div class="product-card hidden-product" data-category="men" style="display: none;">
-                    <div class="product-image"><img src="MALE/DSC02937.jpg" alt="Men's Collection 11"><button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
-                    <div class="product-info"><h3>Graphic Streetwear Tee</h3><p class="price">$30.00</p></div>
+                    <div class="product-image"><img src="MALE/DSC02937.jpg" alt="Men's Collection 11"><button
+                            class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
+                    <div class="product-info">
+                        <h3>Graphic Streetwear Tee</h3>
+                        <p class="price">$30.00</p>
+                    </div>
                 </div>
                 <div class="product-card hidden-product" data-category="men" style="display: none;">
-                    <div class="product-image"><img src="MALE/DSC07970.jpg" alt="Men's Collection 12"><button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
-                    <div class="product-info"><h3>Linen Summer Shirt</h3><p class="price">$42.00</p></div>
+                    <div class="product-image"><img src="MALE/DSC07970.jpg" alt="Men's Collection 12"><button
+                            class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
+                    <div class="product-info">
+                        <h3>Linen Summer Shirt</h3>
+                        <p class="price">$42.00</p>
+                    </div>
                 </div>
                 <div class="product-card hidden-product" data-category="men" style="display: none;">
-                    <div class="product-image"><img src="MALE/DSC07991.jpg" alt="Men's Collection 13"><button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
-                    <div class="product-info"><h3>Tailored Trousers</h3><p class="price">$75.00</p></div>
+                    <div class="product-image"><img src="MALE/DSC07991.jpg" alt="Men's Collection 13"><button
+                            class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
+                    <div class="product-info">
+                        <h3>Tailored Trousers</h3>
+                        <p class="price">$75.00</p>
+                    </div>
                 </div>
                 <div class="product-card hidden-product" data-category="men" style="display: none;">
-                    <div class="product-image"><img src="MALE/DSC08027.jpg" alt="Men's Collection 14"><button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
-                    <div class="product-info"><h3>Knitted Sweater</h3><p class="price">$60.00</p></div>
+                    <div class="product-image"><img src="MALE/DSC08027.jpg" alt="Men's Collection 14"><button
+                            class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
+                    <div class="product-info">
+                        <h3>Knitted Sweater</h3>
+                        <p class="price">$60.00</p>
+                    </div>
                 </div>
                 <div class="product-card hidden-product" data-category="men" style="display: none;">
-                    <div class="product-image"><img src="MALE/DSC08065.jpg" alt="Men's Collection 15"><button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
-                    <div class="product-info"><h3>Canvas Belt</h3><p class="price">$20.00</p></div>
+                    <div class="product-image"><img src="MALE/DSC08065.jpg" alt="Men's Collection 15"><button
+                            class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
+                    <div class="product-info">
+                        <h3>Canvas Belt</h3>
+                        <p class="price">$20.00</p>
+                    </div>
                 </div>
                 <div class="product-card hidden-product" data-category="men" style="display: none;">
-                    <div class="product-image"><img src="MALE/DSC08109.jpg" alt="Men's Collection 16"><button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
-                    <div class="product-info"><h3>Leather Wallet</h3><p class="price">$35.00</p></div>
+                    <div class="product-image"><img src="MALE/DSC08109.jpg" alt="Men's Collection 16"><button
+                            class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
+                    <div class="product-info">
+                        <h3>Leather Wallet</h3>
+                        <p class="price">$35.00</p>
+                    </div>
                 </div>
                 <div class="product-card hidden-product" data-category="men" style="display: none;">
-                    <div class="product-image"><img src="MALE/DSC08113.jpg" alt="Men's Collection 17"><button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
-                    <div class="product-info"><h3>Aviator Sunglasses</h3><p class="price">$25.00</p></div>
+                    <div class="product-image"><img src="MALE/DSC08113.jpg" alt="Men's Collection 17"><button
+                            class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
+                    <div class="product-info">
+                        <h3>Aviator Sunglasses</h3>
+                        <p class="price">$25.00</p>
+                    </div>
                 </div>
                 <div class="product-card hidden-product" data-category="men" style="display: none;">
-                    <div class="product-image"><img src="MALE/DSC08149.jpg" alt="Men's Collection 18"><button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
-                    <div class="product-info"><h3>Duffel Bag</h3><p class="price">$90.00</p></div>
+                    <div class="product-image"><img src="MALE/DSC08149.jpg" alt="Men's Collection 18"><button
+                            class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
+                    <div class="product-info">
+                        <h3>Duffel Bag</h3>
+                        <p class="price">$90.00</p>
+                    </div>
                 </div>
 
                 <div class="product-card hidden-product" data-category="women" style="display: none;">
-                    <div class="product-image"><img src="FEMALE/FEMALE/DSC04056.jpg" alt="Women's Collection 5"><button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
-                    <div class="product-info"><h3>Boho Maxi Dress</h3><p class="price">$85.00</p></div>
+                    <div class="product-image"><img src="FEMALE/FEMALE/DSC04056.jpg" alt="Women's Collection 5"><button
+                            class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
+                    <div class="product-info">
+                        <h3>Boho Maxi Dress</h3>
+                        <p class="price">$85.00</p>
+                    </div>
                 </div>
                 <div class="product-card hidden-product" data-category="women" style="display: none;">
-                    <div class="product-image"><img src="FEMALE/FEMALE/DSC04114.jpg" alt="Women's Collection 6"><button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
-                    <div class="product-info"><h3>Cashmere Cardigan</h3><p class="price">$110.00</p></div>
+                    <div class="product-image"><img src="FEMALE/FEMALE/DSC04114.jpg" alt="Women's Collection 6"><button
+                            class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
+                    <div class="product-info">
+                        <h3>Cashmere Cardigan</h3>
+                        <p class="price">$110.00</p>
+                    </div>
                 </div>
                 <div class="product-card hidden-product" data-category="women" style="display: none;">
-                    <div class="product-image"><img src="FEMALE/FEMALE/DSC04128 1.jpg" alt="Women's Collection 7"><button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
-                    <div class="product-info"><h3>Pleated Midi Skirt</h3><p class="price">$58.00</p></div>
+                    <div class="product-image"><img src="FEMALE/FEMALE/DSC04128 1.jpg"
+                            alt="Women's Collection 7"><button class="add-to-cart-btn"><i
+                                class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
+                    <div class="product-info">
+                        <h3>Pleated Midi Skirt</h3>
+                        <p class="price">$58.00</p>
+                    </div>
                 </div>
                 <div class="product-card hidden-product" data-category="women" style="display: none;">
-                    <div class="product-image"><img src="FEMALE/FEMALE/DSC04149.jpg" alt="Women's Collection 8"><button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
-                    <div class="product-info"><h3>Structured Tote Bag</h3><p class="price">$95.00</p></div>
+                    <div class="product-image"><img src="FEMALE/FEMALE/DSC04149.jpg" alt="Women's Collection 8"><button
+                            class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
+                    <div class="product-info">
+                        <h3>Structured Tote Bag</h3>
+                        <p class="price">$95.00</p>
+                    </div>
                 </div>
                 <div class="product-card hidden-product" data-category="women" style="display: none;">
-                    <div class="product-image"><img src="FEMALE/FEMALE/DSC04470.jpg" alt="Women's Collection 9"><button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
-                    <div class="product-info"><h3>High Waist Jeans</h3><p class="price">$65.00</p></div>
+                    <div class="product-image"><img src="FEMALE/FEMALE/DSC04470.jpg" alt="Women's Collection 9"><button
+                            class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
+                    <div class="product-info">
+                        <h3>High Waist Jeans</h3>
+                        <p class="price">$65.00</p>
+                    </div>
                 </div>
                 <div class="product-card hidden-product" data-category="women" style="display: none;">
-                    <div class="product-image"><img src="FEMALE/FEMALE/DSC04487.jpg" alt="Women's Collection 10"><button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
-                    <div class="product-info"><h3>Gold Hoop Earrings</h3><p class="price">$25.00</p></div>
+                    <div class="product-image"><img src="FEMALE/FEMALE/DSC04487.jpg" alt="Women's Collection 10"><button
+                            class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
+                    <div class="product-info">
+                        <h3>Gold Hoop Earrings</h3>
+                        <p class="price">$25.00</p>
+                    </div>
                 </div>
                 <div class="product-card hidden-product" data-category="women" style="display: none;">
-                    <div class="product-image"><img src="FEMALE/FEMALE/DSC09671.jpg" alt="Women's Collection 11"><button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
-                    <div class="product-info"><h3>Floral Kimono</h3><p class="price">$45.00</p></div>
+                    <div class="product-image"><img src="FEMALE/FEMALE/DSC09671.jpg" alt="Women's Collection 11"><button
+                            class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
+                    <div class="product-info">
+                        <h3>Floral Kimono</h3>
+                        <p class="price">$45.00</p>
+                    </div>
                 </div>
                 <div class="product-card hidden-product" data-category="women" style="display: none;">
-                    <div class="product-image"><img src="FEMALE/FEMALE/DSC09775.jpg" alt="Women's Collection 12"><button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
-                    <div class="product-info"><h3>Velvet Slip Dress</h3><p class="price">$80.00</p></div>
+                    <div class="product-image"><img src="FEMALE/FEMALE/DSC09775.jpg" alt="Women's Collection 12"><button
+                            class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
+                    <div class="product-info">
+                        <h3>Velvet Slip Dress</h3>
+                        <p class="price">$80.00</p>
+                    </div>
                 </div>
                 <div class="product-card hidden-product" data-category="women" style="display: none;">
-                    <div class="product-image"><img src="FEMALE/FEMALE/DSC09887.jpg" alt="Women's Collection 13"><button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
-                    <div class="product-info"><h3>Silk Neck Scarf</h3><p class="price">$30.00</p></div>
+                    <div class="product-image"><img src="FEMALE/FEMALE/DSC09887.jpg" alt="Women's Collection 13"><button
+                            class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
+                    <div class="product-info">
+                        <h3>Silk Neck Scarf</h3>
+                        <p class="price">$30.00</p>
+                    </div>
                 </div>
                 <div class="product-card hidden-product" data-category="women" style="display: none;">
-                    <div class="product-image"><img src="FEMALE/FEMALE/DSC09892.jpg" alt="Women's Collection 14"><button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
-                    <div class="product-info"><h3>Linen Blazer</h3><p class="price">$130.00</p></div>
+                    <div class="product-image"><img src="FEMALE/FEMALE/DSC09892.jpg" alt="Women's Collection 14"><button
+                            class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
+                    <div class="product-info">
+                        <h3>Linen Blazer</h3>
+                        <p class="price">$130.00</p>
+                    </div>
                 </div>
                 <div class="product-card hidden-product" data-category="women" style="display: none;">
-                    <div class="product-image"><img src="FEMALE/FEMALE/DSC09915.jpg" alt="Women's Collection 15"><button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
-                    <div class="product-info"><h3>Ruffled Top</h3><p class="price">$40.00</p></div>
+                    <div class="product-image"><img src="FEMALE/FEMALE/DSC09915.jpg" alt="Women's Collection 15"><button
+                            class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
+                    <div class="product-info">
+                        <h3>Ruffled Top</h3>
+                        <p class="price">$40.00</p>
+                    </div>
                 </div>
                 <div class="product-card hidden-product" data-category="women" style="display: none;">
-                    <div class="product-image"><img src="FEMALE/FEMALE/DSC09933.jpg" alt="Women's Collection 16"><button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
-                    <div class="product-info"><h3>Leather Sandals</h3><p class="price">$55.00</p></div>
+                    <div class="product-image"><img src="FEMALE/FEMALE/DSC09933.jpg" alt="Women's Collection 16"><button
+                            class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
+                    <div class="product-info">
+                        <h3>Leather Sandals</h3>
+                        <p class="price">$55.00</p>
+                    </div>
                 </div>
                 <div class="product-card hidden-product" data-category="women" style="display: none;">
-                    <div class="product-image"><img src="FEMALE/FEMALE/DSC09957.jpg" alt="Women's Collection 17"><button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
-                    <div class="product-info"><h3>Statement Necklace</h3><p class="price">$35.00</p></div>
+                    <div class="product-image"><img src="FEMALE/FEMALE/DSC09957.jpg" alt="Women's Collection 17"><button
+                            class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
+                    <div class="product-info">
+                        <h3>Statement Necklace</h3>
+                        <p class="price">$35.00</p>
+                    </div>
                 </div>
                 <div class="product-card hidden-product" data-category="women" style="display: none;">
-                    <div class="product-image"><img src="FEMALE/FEMALE/DSC09992.jpg" alt="Women's Collection 18"><button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
-                    <div class="product-info"><h3>Canvas Sun Hat</h3><p class="price">$28.00</p></div>
+                    <div class="product-image"><img src="FEMALE/FEMALE/DSC09992.jpg" alt="Women's Collection 18"><button
+                            class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
+                    <div class="product-info">
+                        <h3>Canvas Sun Hat</h3>
+                        <p class="price">$28.00</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -339,8 +494,11 @@
                 <div class="about-content">
                     <span class="about-subtitle">The Riyah Story</span>
                     <h2>Elegance with Heritage. <br> Confidence in Quality.</h2>
-                    <p>At Riyah Fashion, we believe that true elegance is found at the intersection of heritage and modern confidence. Founded with a vision to empower every individual through style, our collections are a celebration of cultural richness and contemporary flair.</p>
-                    <p>Every stitch tells a story of quality, pride, and the effortless beauty that comes from being yourself. Join us as we redefine everyday fashion for the confident soul.</p>
+                    <p>At Riyah Fashion, we believe that true elegance is found at the intersection of heritage and
+                        modern confidence. Founded with a vision to empower every individual through style, our
+                        collections are a celebration of cultural richness and contemporary flair.</p>
+                    <p>Every stitch tells a story of quality, pride, and the effortless beauty that comes from being
+                        yourself. Join us as we redefine everyday fashion for the confident soul.</p>
                     <a href="about.html" class="btn btn-outline" style="margin-top: 20px;">Learn More</a>
                 </div>
             </div>
@@ -349,7 +507,7 @@
         <!-- Newsletter -->
         <section class="newsletter">
             <div class="container">
-                <h2>Get 25% Off Discount Coupons</h2>
+                <h2>Join Our Newsletter</h2>
                 <p>Join our newsletter and never miss our latest news, updates and amazing offers.</p>
                 <form class="newsletter-form">
                     <input type="email" placeholder="Your Email Address" required>
@@ -364,9 +522,10 @@
             <div class="footer-grid">
                 <div class="footer-col first">
                     <div class="footer-logo">
-                        <img src="imgs/riyah-logo.png" alt="Riyah Fashion">
+                        <img src="imgs/riyah-logo.png" alt="Riyah Fashion" style="filter: brightness(0) invert(1);">
                     </div>
-                    <p>Fashion that speaks your language and builds your confidence.</p>
+                    <p style="color: rgba(255, 255, 255, 0.8);">Fashion that speaks your language and builds your
+                        confidence.</p>
                 </div>
                 <div class="footer-col">
                     <h4>Customer Service</h4>
@@ -390,21 +549,22 @@
                 <div class="footer-col" id="contact-footer">
                     <h4>Contact Us</h4>
                     <ul>
-                        <li><a href="mailto:hello@riyahfashion.com"><i class="fa-solid fa-envelope"></i> hello@riyahfashion.com</a></li>
-                        <li><a href="tel:+15551234567"><i class="fa-solid fa-phone"></i> +1 (555) 123-4567</a></li>
+                        <li><a href="mailto:houseofriyah@gmail.com">houseofriyah@gmail.com</a></li>
+                        <li><a href="tel:09166194114">09166194114</a></li>
                         <li class="social-links">
-                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                            <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                            <a href="https://www.instagram.com/houseofriyah?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                                target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="https://www.facebook.com/profile.php?id=100063948313758&_rdc=1&_rdr#"
+                                target="_blank"><i class="fa-brands fa-facebook"></i></a>
                         </li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>FASHION</h4>
+                    <h4>Categories</h4>
                     <ul>
                         <li><a href="#">Men's Collection</a></li>
                         <li><a href="#">Women's Collection</a></li>
-                                                                    </ul>
+                    </ul>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -445,13 +605,15 @@
                 <button class="auth-tab active" data-tab="login">Login</button>
                 <button class="auth-tab" data-tab="signup">Sign Up</button>
             </div>
-            
+
             <form id="loginForm" class="auth-form active">
                 <h3>Welcome Back</h3>
                 <input type="email" placeholder="Email Address" required>
                 <input type="password" placeholder="Password" required>
                 <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Login</button>
-                <a href="#" class="forgot-password" style="display: block; text-align: center; margin-top: 15px; font-size: 0.9rem; color: var(--text-muted);">Forgot Password?</a>
+                <a href="#" class="forgot-password"
+                    style="display: block; text-align: center; margin-top: 15px; font-size: 0.9rem; color: var(--text-muted);">Forgot
+                    Password?</a>
             </form>
 
             <form id="signupForm" class="auth-form" style="display: none;">
@@ -466,4 +628,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>

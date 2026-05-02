@@ -37,7 +37,8 @@ const products = [
     { id: 'women-15', title: 'Azure Blue Blouse', price: 52.00, image: 'FEMALE/FEMALE/DSC03544.jpg', category: 'women' },
     { id: 'women-16', title: 'Velvet Dream Nightwear', price: 85.00, image: 'FEMALE/FEMALE/DSC03569.jpg', category: 'women' },
     { id: 'women-17', title: 'Ecru Linen Trousers', price: 72.00, image: 'FEMALE/FEMALE/DSC03585.jpg', category: 'women' },
-    { id: 'women-18', title: 'Petal Soft Cardigan', price: 58.00, image: 'FEMALE/FEMALE/DSC03598.jpg', category: 'women' }
+    { id: 'women-18', title: 'Petal Soft Cardigan', price: 58.00, image: 'FEMALE/FEMALE/DSC03598.jpg', category: 'women' },
+
 ];
 
 window.catalogData = products;

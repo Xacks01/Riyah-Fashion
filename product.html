@@ -224,9 +224,10 @@
             <div class="footer-grid">
                 <div class="footer-col first">
                     <div class="footer-logo">
-                        <img src="imgs/riyah-logo.png" alt="Riyah Fashion">
+                        <img src="imgs/riyah-logo.png" alt="Riyah Fashion" style="filter: brightness(0) invert(1);">
                     </div>
-                    <p>Fashion that speaks your language and builds your confidence.</p>
+                    <p style="color: rgba(255, 255, 255, 0.8);">Fashion that speaks your language and builds your
+                        confidence.</p>
                 </div>
                 <div class="footer-col">
                     <h4>Customer Service</h4>
@@ -250,13 +251,21 @@
                 <div class="footer-col" id="contact-footer">
                     <h4>Contact Us</h4>
                     <ul>
-                        <li><a href="mailto:hello@riyahfashion.com"><i class="fa-solid fa-envelope"></i> hello@riyahfashion.com</a></li>
-                        <li><a href="tel:+15551234567"><i class="fa-solid fa-phone"></i> +1 (555) 123-4567</a></li>
+                        <li><a href="mailto:houseofriyah@gmail.com">houseofriyah@gmail.com</a></li>
+                        <li><a href="tel:09166194114">09166194114</a></li>
                         <li class="social-links">
-                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                            <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                            <a href="https://www.instagram.com/houseofriyah?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                                target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="https://www.facebook.com/profile.php?id=100063948313758&_rdc=1&_rdr#"
+                                target="_blank"><i class="fa-brands fa-facebook"></i></a>
                         </li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="#">Men's Collection</a></li>
+                        <li><a href="#">Women's Collection</a></li>
                     </ul>
                 </div>
             </div>
@@ -350,10 +359,9 @@
                         <div class="option-group">
                             <label>Select Size</label>
                             <div class="size-options">
-                                <div class="size-btn">S</div>
-                                <div class="size-btn active">M</div>
-                                <div class="size-btn">L</div>
-                                <div class="size-btn">XL</div>
+                                ${product.category === 'men' 
+                                    ? '<div class="size-btn active">M</div><div class="size-btn">L</div><div class="size-btn">XL</div><div class="size-btn">XXL</div><div class="size-btn">XXXL</div>'
+                                    : '<div class="size-btn active">8</div><div class="size-btn">10</div><div class="size-btn">12</div><div class="size-btn">14</div><div class="size-btn">16</div><div class="size-btn">18</div><div class="size-btn">20</div>'}
                             </div>
                         </div>
                         <div class="action-buttons">
