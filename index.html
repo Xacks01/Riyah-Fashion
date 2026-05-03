@@ -186,6 +186,7 @@
                 <button class="filter-btn active" data-category="all">All</button>
                 <button class="filter-btn" data-category="men">Men</button>
                 <button class="filter-btn" data-category="women">Women</button>
+                <button class="filter-btn" data-category="kids">Kids</button>
             </div>
             <div class="product-grid" id="shop-grid">
                 <!-- 18 MEN'S PRODUCTS -->
@@ -252,6 +253,24 @@
                     <div class="product-info">
                         <h3>Chic Wrap Skirt</h3>
                         <p class="price">$48.00</p>
+                    </div>
+                </div>
+
+                <!-- KIDS PRODUCTS -->
+                <div class="product-card" data-category="kids">
+                    <div class="product-image"><img src="MALE/DSC02569.jpg" alt="Kids Collection 1"><button
+                            class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
+                    <div class="product-info">
+                        <h3>Mini Explorer Set</h3>
+                        <p class="price">$30.00</p>
+                    </div>
+                </div>
+                <div class="product-card" data-category="kids">
+                    <div class="product-image"><img src="FEMALE/FEMALE/DSC03146.jpg" alt="Kids Collection 2"><button
+                            class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div>
+                    <div class="product-info">
+                        <h3>Little Dreamer Onesie</h3>
+                        <p class="price">$25.00</p>
                     </div>
                 </div>
 
@@ -522,10 +541,9 @@
             <div class="footer-grid">
                 <div class="footer-col first">
                     <div class="footer-logo">
-                        <img src="imgs/riyah-logo.png" alt="Riyah Fashion" style="filter: brightness(0) invert(1);">
+                        <img src="imgs/riyah-logo.png" alt="RIYAH" style="filter: brightness(0) invert(1);">
                     </div>
-                    <p style="color: rgba(255, 255, 255, 0.8);">Fashion that speaks your language and builds your
-                        confidence.</p>
+                    <p style="color: white; font-weight: 500; font-style: italic;">Rooted in heritage. Made for your world.</p>
                 </div>
                 <div class="footer-col">
                     <h4>Customer Service</h4>
@@ -533,7 +551,6 @@
                         <li><a href="faq.html">FAQ</a></li>
                         <li><a href="shipping.html">Shipping</a></li>
                         <li><a href="returns.html">Returns</a></li>
-                        <li><a href="terms.html">Terms & Privacy</a></li>
                         <li><a href="track-order.html">Track Order</a></li>
                     </ul>
                 </div>
@@ -541,16 +558,17 @@
                     <h4>About Us</h4>
                     <ul>
                         <li><a href="about.html">Our Story</a></li>
-                        <li><a href="careers.html">Careers</a></li>
                         <li><a href="press.html">Press</a></li>
-                        <li><a href="stores.html">Stores</a></li>
                     </ul>
                 </div>
                 <div class="footer-col" id="contact-footer">
                     <h4>Contact Us</h4>
                     <ul>
-                        <li><a href="mailto:houseofriyah@gmail.com">houseofriyah@gmail.com</a></li>
-                        <li><a href="tel:09166194114">09166194114</a></li>
+                        <li><a href="mailto:houseofriyah@gmail.com"><i class="fa-solid fa-envelope"></i> houseofriyah@gmail.com</a></li>
+                        <li><a href="tel:+2349166194114"><i class="fa-solid fa-phone"></i> +234 916 619 4114</a></li>
+                        <li style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; margin-top: 10px;">
+                            <i class="fa-solid fa-location-dot"></i> 46a Mike Akhigbe Way, Jabi, Abuja Nigeria
+                        </li>
                         <li class="social-links">
                             <a href="https://www.instagram.com/houseofriyah?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
                                 target="_blank"><i class="fa-brands fa-instagram"></i></a>
@@ -564,11 +582,15 @@
                     <ul>
                         <li><a href="#">Men's Collection</a></li>
                         <li><a href="#">Women's Collection</a></li>
+                        <li><a href="#">Kids</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Riyah Fashion. All rights reserved.</p>
+                <p>&copy; 2026 RIYAH. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="terms.html">Terms & Privacy</a>
+                </div>
                 <div class="payment-methods">
                     <i class="fa-brands fa-cc-visa"></i>
                     <i class="fa-brands fa-cc-mastercard"></i>
@@ -608,20 +630,37 @@
 
             <form id="loginForm" class="auth-form active">
                 <h3>Welcome Back</h3>
-                <input type="email" placeholder="Email Address" required>
-                <input type="password" placeholder="Password" required>
+                <div class="input-group">
+                    <i class="fa-regular fa-envelope"></i>
+                    <input type="email" placeholder="Email Address" required>
+                </div>
+                <div class="input-group">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" placeholder="Password" required>
+                </div>
                 <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Login</button>
-                <a href="#" class="forgot-password"
-                    style="display: block; text-align: center; margin-top: 15px; font-size: 0.9rem; color: var(--text-muted);">Forgot
-                    Password?</a>
+                <a href="#" class="forgot-password">Forgot Password?</a>
             </form>
 
-            <form id="signupForm" class="auth-form" style="display: none;">
+            <form id="signupForm" class="auth-form">
                 <h3>Create Account</h3>
-                <input type="text" placeholder="Full Name" required>
-                <input type="email" placeholder="Email Address" required>
-                <input type="password" placeholder="Password" required>
-                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Sign Up</button>
+                <div class="input-group">
+                    <i class="fa-regular fa-user"></i>
+                    <input type="text" placeholder="Full Name" required>
+                </div>
+                <div class="input-group">
+                    <i class="fa-regular fa-envelope"></i>
+                    <input type="email" placeholder="Email Address" required>
+                </div>
+                <div class="input-group">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" placeholder="Password" required>
+                </div>
+                <div class="terms-checkbox" style="margin-bottom: 15px; display: flex; align-items: flex-start; gap: 10px; font-size: 0.85rem; color: var(--text-muted);">
+                    <input type="checkbox" id="terms" required style="width: auto; margin-top: 3px;">
+                    <label for="terms">I agree to the <a href="terms.html" style="color: var(--primary);">Terms & Privacy Policy</a></label>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Create Account</button>
             </form>
         </div>
     </div>

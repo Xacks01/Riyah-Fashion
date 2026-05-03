@@ -39,6 +39,9 @@ const products = [
     { id: 'women-17', title: 'Ecru Linen Trousers', price: 72.00, image: 'FEMALE/FEMALE/DSC03585.jpg', category: 'women' },
     { id: 'women-18', title: 'Petal Soft Cardigan', price: 58.00, image: 'FEMALE/FEMALE/DSC03598.jpg', category: 'women' },
 
+    // Kids' Collection
+    { id: 'kids-1', title: 'Mini Explorer Set', price: 30.00, image: 'MALE/DSC02569.jpg', category: 'kids' },
+    { id: 'kids-2', title: 'Little Dreamer Onesie', price: 25.00, image: 'FEMALE/FEMALE/DSC03146.jpg', category: 'kids' }
 ];
 
 window.catalogData = products;

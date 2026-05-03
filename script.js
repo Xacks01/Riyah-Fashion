@@ -460,5 +460,37 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // ==========================================
+    // Checkout Functionality
+    // ==========================================
+    const checkoutBtn = document.querySelector('.checkout-btn');
+    if (checkoutBtn) {
+        checkoutBtn.addEventListener('click', () => {
+            if (cart.length === 0) {
+                alert('Your cart is empty. Add some pieces to your collection before checking out!');
+                return;
+            }
+
+            // Simulate Shopify Flow
+            checkoutBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Processing...';
+            checkoutBtn.disabled = true;
+
+            setTimeout(() => {
+                alert('Proceeding to Secure Checkout. You are being redirected to our Shopify store...');
+                // In a real scenario, this would be a Shopify permalink or cart redirect
+                // window.location.href = 'https://riyah.myshopify.com/checkout';
+                
+                // For now, let's just reset and show success
+                checkoutBtn.innerHTML = 'Checkout';
+                checkoutBtn.disabled = false;
+                cart = [];
+                saveCart();
+                renderCart();
+                toggleCart();
+                alert('Thank you for shopping with RIYAH! Your order session has been initiated.');
+            }, 1500);
+        });
+    }
+
     renderCart(); // Initial render to load from localStorage
 });
